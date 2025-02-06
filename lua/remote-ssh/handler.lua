@@ -1,6 +1,6 @@
-local utils = require "remote-sshfs.utils"
-local ui = require "remote-sshfs.ui"
-local log = require "remote-sshfs.log"
+local utils = require "remote-ssh.utils"
+local ui = require "remote-ssh.ui"
+local log = require "remote-ssh.log"
 
 local M = {}
 

@@ -1,4 +1,4 @@
-local log = require "remote-sshfs.log"
+local log = require "remote-ssh.log"
 
 local M = {}
 

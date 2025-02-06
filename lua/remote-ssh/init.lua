@@ -49,36 +49,36 @@ M.setup_commands = function()
   -- Create commands to connect/edit/reload/disconnect/find_files/live_grep
   vim.api.nvim_create_user_command("RemoteSSHFSConnect", function(opts)
     if opts.args and opts.args ~= "" then
-      local host = require("remote-sshfs.utils").parse_host_from_command(opts.args)
-      require("remote-sshfs.connections").connect(host)
+      local host = require("remote-ssh.utils").parse_host_from_command(opts.args)
+      require("remote-ssh.connections").connect(host)
     else
-      require("telescope").extensions["remote-sshfs"].connect()
+      require("telescope").extensions["remote-ssh"].connect()
     end
   end, { nargs = "?", desc = "Remotely connect to host via picker or command as argument." })
   vim.api.nvim_create_user_command("RemoteSSHFSEdit", function()
-    require("telescope").extensions["remote-sshfs"].edit()
+    require("telescope").extensions["remote-ssh"].edit()
   end, {})
   vim.api.nvim_create_user_command("RemoteSSHFSReload", function()
-    require("remote-sshfs.connections").reload()
+    require("remote-ssh.connections").reload()
   end, {})
   vim.api.nvim_create_user_command("RemoteSSHFSDisconnect", function()
-    require("remote-sshfs.connections").unmount_host()
+    require("remote-ssh.connections").unmount_host()
   end, {})
   vim.api.nvim_create_user_command("RemoteSSHFSFindFiles", function()
-    require("telescope").extensions["remote-sshfs"].find_files {}
+    require("telescope").extensions["remote-ssh"].find_files {}
   end, {})
   vim.api.nvim_create_user_command("RemoteSSHFSLiveGrep", function()
-    require("telescope").extensions["remote-sshfs"].live_grep {}
+    require("telescope").extensions["remote-ssh"].live_grep {}
   end, {})
 end
 
 M.setup = function(config)
   local opts = config and vim.tbl_deep_extend("force", default_opts, config) or default_opts
 
-  require("remote-sshfs.connections").setup(opts)
-  require("remote-sshfs.ui").setup(opts)
-  require("remote-sshfs.handler").setup(opts)
-  require("remote-sshfs.log").setup(opts)
+  require("remote-ssh.connections").setup(opts)
+  require("remote-ssh.ui").setup(opts)
+  require("remote-ssh.handler").setup(opts)
+  require("remote-ssh.log").setup(opts)
 
   M.setup_commands()
 end

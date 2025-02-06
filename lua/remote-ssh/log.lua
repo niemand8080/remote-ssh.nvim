@@ -29,12 +29,12 @@ end
 
 M.setup = function(opts)
   if opts.log.enabled and opts.log.types then
-    M.path = string.format("%s/remote-sshfs.log", vim.fn.stdpath "cache", os.date "%H:%M:%S", vim.env.USER)
+    M.path = string.format("%s/remote-ssh.log", vim.fn.stdpath "cache", os.date "%H:%M:%S", vim.env.USER)
     M.types = opts.log.types
     if opts.log.truncate then
       os.remove(M.path)
     end
-    vim.notify("remote-sshfs logging to " .. M.path)
+    vim.notify("remote-ssh logging to " .. M.path)
   end
 end
 

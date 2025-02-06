@@ -1,7 +1,7 @@
 local sorters = require "telescope.sorters"
 local state = require "telescope.actions.state"
 local previewers = require "telescope.previewers"
-local log = require "remote-sshfs.log"
+local log = require "remote-ssh.log"
 local ns_previewer = vim.api.nvim_create_namespace "telescope.previewers"
 
 -- Build virtualized host file from parsed hosts from plugin
@@ -36,7 +36,7 @@ local function connect(_)
     error "Cannot find telescope!"
   end
 
-  local connections = require "remote-sshfs.connections"
+  local connections = require "remote-ssh.connections"
   local hosts = connections.list_hosts()
 
   -- Build preivewer and set highlighting for each to "sshconfig"
@@ -83,7 +83,7 @@ local function edit_config(_)
     error "Cannot find telescope!"
   end
 
-  local connections = require "remote-sshfs.connections"
+  local connections = require "remote-ssh.connections"
   local ssh_configs = connections.list_ssh_configs()
 
   pickers
@@ -123,10 +123,10 @@ end
 -- Remote find_files implementation
 local function find_files(opts)
   local connections
-  if pcall(require, "remote-sshfs") then
-    connections = require "remote-sshfs.connections"
+  if pcall(require, "remote-ssh") then
+    connections = require "remote-ssh.connections"
   else
-    error "Cannot find remote-sshfs"
+    error "Cannot find remote-ssh"
   end
 
   -- Check that a connection exists
@@ -315,10 +315,10 @@ end
 -- Remote live_grep implementation
 local function live_grep(opts)
   local connections
-  if pcall(require, "remote-sshfs") then
-    connections = require "remote-sshfs.connections"
+  if pcall(require, "remote-ssh") then
+    connections = require "remote-ssh.connections"
   else
-    error "Cannot find remote-sshfs"
+    error "Cannot find remote-ssh"
   end
 
   -- Check that a connection exists

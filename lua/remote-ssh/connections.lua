@@ -1,6 +1,6 @@
-local utils = require "remote-sshfs.utils"
-local ui = require "remote-sshfs.ui"
-local handler = require "remote-sshfs.handler"
+local utils = require "remote-ssh.utils"
+local ui = require "remote-ssh.ui"
+local handler = require "remote-ssh.handler"
 
 local config = {}
 local hosts = {}

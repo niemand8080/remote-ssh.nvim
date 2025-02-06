@@ -1,3 +1,7 @@
+# Remote SSH
+
+A fork of the [remote-sshfs.nvim](https://github.com/nosduco/remote-sshfs.nvim) plugin so it works for me.
+
 
 # 🌐 remote-sshfs.nvim [![Actions status](https://github.com/nosduco/remote-sshfs.nvim/workflows/CI/badge.svg)](https://github.com/nosduco/remote-sshfs.nvim/actions)
 
